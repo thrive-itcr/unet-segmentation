@@ -1,2 +1,4 @@
-# This repository contains code to integrate a UNet-based segmentation algorithm into the THRIVE framework
+# UNet-based segmentation algorithm
+
+This repository contains a UNet-based segmentation algorithm and wrapper code to integrate it into the THRIVE framework. 
 
