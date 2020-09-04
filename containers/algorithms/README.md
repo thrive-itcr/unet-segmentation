@@ -1,2 +1,4 @@
-# This repository contains code to integrate a UNet-based segmentation algorithm into the THRIVE framework
+# Docker files to build the UNet algorithm image
+
+
 
