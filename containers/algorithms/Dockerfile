@@ -6,8 +6,7 @@ USER root
 
 ENV DEBIAN_FRONTEND=noninteractive 
 
-RUN  echo "52.22.146.88 index.docker.io" >> /etc/hosts \
-  && apt-get update \
+RUN  apt-get update \
   && apt-get install -y -qq --no-install-recommends \
        curl \
        apt-utils \
