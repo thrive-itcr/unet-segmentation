@@ -1,0 +1,127 @@
+{
+  "name" : "unet-cell-segmentation",
+  "version" : "v1_0_0",
+  "queue" : "unet-cell-segmentation--v1_0_0",
+  "parameters" : {
+    "slide" : {
+      "label" : "Slide Name",
+      "description" : "The slide being analyzed.",
+      "type" : "string",
+      "default" : ""
+    },
+    "region" : {
+      "label" : "Region",
+      "description" : "The region being analyzed.",
+      "type" : "string",
+      "default" : ""
+    },
+    "branch" : {
+      "label" : "Analysis Container",
+      "description" : "Tag for analysis results.",
+      "type" : "string",
+      "default" : "templateAnalysis"
+    },
+    "channel" : {
+      "label" : "Cell Channel",
+      "description" : "Channel to use for whole-cell segmentation.",
+      "type" : "string",
+      "default" : ""
+    },
+    "force" : {
+      "label" : "Force",
+      "description" : "Whether to force an overwrite",
+      "type" : "boolean",
+      "default" : false
+    },
+    "dapi_channel" : {
+      "label" : "Nuclei Channel",
+      "description" : "Nuclei channel to use for whole-cell segmentation.",
+      "type" : "string",
+      "default" : "DAPI"
+    },
+    "minLevel" : {
+      "label" : "Min Level",
+      "description" : "",
+      "type" : "number",
+      "default" : 4
+    },
+    "maxLevel" : {
+      "label" : "Max Level",
+      "description" : "",
+      "type" : "number",
+      "default" : 5
+    },
+    "patchSize" : {
+      "label" : "Patch Size",
+      "description" : "",
+      "type" : "number",
+      "default" : 400
+    },    
+    "required" : ["slide", "region", "branch", "force", "dapi_channel", "patchSize", "minLevel", "maxLevel"]
+  },
+  "results" : {
+    "nucleiImage" : {
+      "label" : "Nuclei Image",
+      "description" : "Input URI to nucleus-stained image",
+      "type" : "pathologyImage",
+      "value" : "slide/region/source/DAPI"
+    },
+    "cellImage" : {
+      "label" : "Cell Image",
+      "description" : "Input URI to image stained for a cell (cytoplasm) marker",
+      "type" : "pathologyImage",
+      "value" : "slide/region/source/channel"
+    },
+    "nucleiMap" : {
+      "label" : "Nuclei Label Map",
+      "description" : "Label map showing nuclei regions",
+      "type" : "pathologyImage",
+      "value" : "slide/region/branch/NucSeg"
+    },
+    "cellMap" : {
+      "label" : "Cell Label Map",
+      "description" : "Label map showing cellular regions",
+      "type" : "pathologyImage",
+      "value" : "slide/region/branch/CellSeg"
+    }
+  },
+  "result_display" : {
+    "grid" : {
+      "shape" : [1,1],
+      "columns" : [1.0],
+      "rows" : [1.0]
+    },
+    "cells" : [
+      {
+        "column" : 0,
+        "row" : 0,
+        "cellType" : "pathologyImage",
+        "source" : "result",
+        "parameter" : "nucleiImage"
+      },
+      {
+        "column": 0,
+        "row": 0,
+        "cellType": "pathologyImage",
+        "source": "result",
+        "parameter": "nucleiMap",
+        "imageProcessing" : "toBinaryImage",
+        "properties" : {
+          "color" : "rgb(255,51,51)"
+        },
+        "controls": {
+          "opacity": "Mask Opacity: ",
+          "color": "Mask Color: "
+        }
+      }
+    ]
+  },
+  "api" : {
+    "context" : "none"
+  },
+  "doc" : {
+    "short" : "A short bit of documentation",
+    "full" : "Full documentation"
+  },
+  "classification" : "segmentation/cell"
+}
