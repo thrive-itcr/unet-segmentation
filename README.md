@@ -16,13 +16,13 @@ Rt106_SERVER_HOST=localhost
 
 ## Build the UNet cell segmentation algorithm docker image
 
-First, build the rt106 base image. Go to "\~/projects/thrive/rt106-algorithm-sdk" directory, build the "thrive20/rt106-algorithm-sdk-focal" image by doing:
+First, build the rt106 base image. Go to "containers" directory, build the "thrive20/rt106-algorithm-sdk-focal" image by doing:
 
 `
 $ docker build -t thrive20/rt106-algorithm-sdk-focal .
 `
 
-Second, build the algorithm image. Go to the algorithm directory, e.g., \~/projects/algorithms, build the algorithm image by:
+Second, build the algorithm image. Go to the algorithm directory, e.g., containers/algorithms, build the algorithm image by:
 
 `
 $ docker build -t thrive20/unet-cell-segmentation-focal .
