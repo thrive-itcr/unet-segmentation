@@ -1,6 +1,7 @@
 # UNet-based segmentation algorithm
 
-This repository contains a UNet-based segmentation algorithm and wrapper code to integrate it into the THRIVE framework. 
+
+This repository contains a UNet-based segmentation algorithm and wrapper code to integrate it into the THRIVE framework. This repository is a work in progress, and the segmentation model is to be published in future. Please feel free to contact Yang Zhao (yang.zhao@ge.com) if any questions. 
 
 ## Unpack data as instructed in THRIVE
 
